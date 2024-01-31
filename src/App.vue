@@ -1,47 +1,32 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref, onMounted } from 'vue'
+
+//reactive state
+const count = ref({
+	cnt: 0,
+	name: "Park",
+	age: 20
+})//초기값을 1로 세팅
+
+// functions that mutate state and trigger updates
+function increment(){ //반응형 선택 함수
+    count.value.cnt++
+    count.value.name = count.value.name.split('').reverse().join('')
+    count.value.age = count.value.age + 3
+}
+
+//lifecycle hooks
+onMounted(() => console.log(`Theinitial count is ${count.value}.`))
 </script>
 
+
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <button @click="increment">Count is : {{ count.cnt }} {{ count.name }} {{ count.age }} </button>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+button {
+    font-weight: bold;
 }
 </style>
+
