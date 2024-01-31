@@ -9,7 +9,10 @@ const Category = ref(category)
 
 <template>
   <li v-for= "(item) in Category">
-     {{ item.type }} {{ item.prefix }} {{ item.categorySubDivision }} 
+<br>
+type: {{ item.type }} <br>
+prefix: {{ item.prefix }} <br>
+categorySubDivision: {{ item.categorySubDivision }} <br>
      <hr>
   </li>
 </template>
