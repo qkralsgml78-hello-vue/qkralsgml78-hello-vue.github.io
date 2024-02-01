@@ -1,7 +1,9 @@
 <script setup>
+import { ref } from 'vue'
 import Child from './components/Child.vue'
+const pocketMoney = ref('부모 컴포넌트로 부터 <📧 >을 전달 받았어요!')
 </script>
 
 <template>
-<Child />
-</template>
+<Child :pocketMoney="pocketMoney" />
+</template>    
